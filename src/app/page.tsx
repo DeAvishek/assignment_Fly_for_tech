@@ -1,31 +1,49 @@
 import Link from "next/link";
 import Hero from "@/components/Hero";
+import About from "@/components/About";
+import Feature from "@/components/Feature";
 
 export default function Home() {
   return (
     <>
       <header className="py-4 shadow-md bg-white">
         <nav className="container mx-auto flex justify-between items-center px-4">
-          <Link href="/" className="text-2xl font-bold text-blue-600">Upskill</Link>
+          <Link href="/" className="text-2xl font-bold text-blue-600">
+            Upskill
+          </Link>
         </nav>
       </header>
 
-      <main className="flex flex-col items-center justify-center min-h-[calc(100vh-80px)] bg-gray-50 px-4">
+      <main className="flex flex-col items-center bg-gray-50 px-4">
         {/* Hero Section */}
-        <section className="flex flex-col md:flex-row items-center max-w-6xl w-full">
+        <section className="flex flex-col md:flex-row items-center justify-center w-full min-h-screen max-w-7xl mx-auto py-12">
           {/* Left Side: Image */}
-          <div className="w-full md:w-1/2 flex justify-center">
+          <div className="w-full md:w-1/2 flex justify-center p-4">
             <img
-              className="max-w-full h-auto rounded-lg shadow-lg"
+              className="w-full h-auto max-w-md md:max-w-full rounded-lg shadow-lg object-cover"
               src="https://img.freepik.com/premium-photo/celebration-independence-day-malawi-website-covers_307791-3243.jpg?w=1380"
               alt="banner"
             />
           </div>
 
-          {/* Right Side: Content */}
-          <Hero/>
+          {/* Right Side: Hero Content */}
+          <div className="w-full md:w-1/2 flex justify-center p-1">
+            <Hero />
+          </div>
         </section>
+        <hr className="border-t border-gray-500 w-full my-8" />
+
         
+        {/* About Section */}
+        <section className="flex flex-col items-center justify-center w-full min-h-screen max-w-7xl mx-auto py-12">
+          <About />
+        </section>
+        {/* Feature section */}
+
+        <hr className="border-t border-gray-500 w-full my-8" />
+        <section className="flex flex-col items-center justify-center w-full min-h-screen max-w-7xl mx-auto py-12">
+          < Feature/>
+        </section>
       </main>
     </>
   );
