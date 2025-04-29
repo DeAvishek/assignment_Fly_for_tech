@@ -2,11 +2,12 @@ import Link from "next/link";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Feature from "@/components/Feature";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
     <>
-      <header className="py-4 shadow-md bg-white">
+      <header className="py-4 shadow-md ">
         <nav className="container mx-auto flex justify-between items-center px-4">
           <Link href="/" className="text-2xl font-bold text-blue-600">
             Upskill
@@ -44,7 +45,12 @@ export default function Home() {
         <section className="flex flex-col items-center justify-center w-full min-h-screen max-w-7xl mx-auto py-12">
           < Feature/>
         </section>
-      </main>
+        <hr className="border-t border-gray-500 w-full my-8" />
+        
+        {/* <section className="flex flex-col items-center justify-center w-full min-h-screen max-w-7xl mx-auto py-12"> */}
+          < Footer/>
+        {/* </section> */}
+      </main> 
     </>
   );
 }
