@@ -7,7 +7,7 @@ export async function PUT(req:NextRequest){
     try {
         await dbConnect()
         const reqBody  = await req.json();
-        await SectionModel.findOneAndUpdate({sectionName:"Footer Section"},{content:reqBody.content})
+        await SectionModel.findOneAndUpdate({sectionName:"footer"},{content:reqBody.content})
         return NextResponse.json({message:"Hero section updated successFully"},{status:200})
     } catch (error) {
         return NextResponse.json({message:error||"InterNal server error"},{status:500})

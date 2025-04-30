@@ -1,53 +1,34 @@
-'use client'
-import React from 'react'
-import HeroEditor from '@/components/HeroEditor'
-import AboutEditor from '@/components/AboutEditor'
-import Feature from '@/components/Feature'
-import FooterEditor from '@/components/FooterEdit'
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
+'use client';
+import { useState } from 'react';
+import SectionReorder from '@/components/SortableWrapper';
+import HeroEditor from '@/components/HeroEditor';
+import AboutEditor from '@/components/AboutEditor';
+import Feature from '@/components/Feature';
+import FooterEditor from '@/components/FooterEdit';
 
-const Page = () => {
+const componentMap: Record<string, React.JSX.Element> = {
+  hero: <HeroEditor />,
+  about: <AboutEditor />,
+  feature: <Feature />,
+  footer: <FooterEditor />
+};
+
+export default function AdminPage() {
+  const [sectionOrder, setSectionOrder] = useState(['hero', 'about', 'feature', 'footer']);
+
   return (
-    <div className="p-6 space-y-8 bg-gray-50 min-h-screen">
-      <h1 className="text-3xl font-bold mb-4 text-center">Admin Panel</h1>
+    <div className="p-6 bg-gray-100 min-h-screen">
+      <h1 className="text-3xl font-bold text-center mb-6">Admin Panel</h1>
 
-      <Card className="shadow-md">
-        <CardHeader>
-          <CardTitle>Hero Section</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <HeroEditor />
-        </CardContent>
-      </Card>
+      <SectionReorder onReorder={setSectionOrder} />
 
-      <Card className="shadow-md">
-        <CardHeader>
-          <CardTitle>About Section</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <AboutEditor />
-        </CardContent>
-      </Card>
-
-      <Card className="shadow-md">
-        <CardHeader>
-          <CardTitle>Feature Section</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <Feature />
-        </CardContent>
-      </Card>
-
-      <Card className="shadow-md mb-10">
-        <CardHeader>
-          <CardTitle>Footer Section</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <FooterEditor />
-        </CardContent>
-      </Card>
+      <div className="space-y-6 mt-10">
+        {sectionOrder.map(sectionId => (
+          <div key={sectionId} className="p-4 border rounded bg-white shadow-md">
+            {componentMap[sectionId]}
+          </div>
+        ))}
+      </div>
     </div>
-  )
+  );
 }
-
-export default Page

@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
     try {
         await dbConnect()
-        const hero = await SectionModel.findOne({sectionName:"Hero"})
+        const hero = await SectionModel.findOne({sectionName:"hero"})
         return NextResponse.json({section:hero , success:true},{status:200})
     } catch (error) {
         console.log(error)
