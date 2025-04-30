@@ -13,14 +13,16 @@ const HeroEditor = () => {
   const [hero, setHero] = useState<HeroSection | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [responseM, setResponseM] = useState<string>('');
-  const [toggleBottuon, settoggleBottuon] = useState<boolean>(false)
   const getHero = async () => {
     try {
       setLoading(true);
       const response = await axios.get('/api/get-sections/hero');
       setHero(response.data.section);
-    } catch (error: any) {
-      setResponseM(error.response?.data.error?.message || "Internal server error");
+    } catch (error) {
+      if(axios.isAxiosError(error)){
+        setResponseM(error.response?.data.error?.message || "Internal server error");
+      }
+      
     } finally {
       setLoading(false);
     }
@@ -33,6 +35,8 @@ const HeroEditor = () => {
       alert("Hero section updated!");
     } catch (error) {
       alert("Failed to update");
+      if(axios.isAxiosError(error))
+      console.log(error.response?.data.error.message || "Internal server error")
     }
   };
 

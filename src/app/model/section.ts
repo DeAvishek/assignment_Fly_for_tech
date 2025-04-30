@@ -1,7 +1,7 @@
 import mongoose ,{Schema,Document} from "mongoose"
 interface ISection extends Document {
     sectionName: string;
-    content: any;
+    content: unknown;
     order: number;
 }
 const SectionSchem:Schema <ISection> = new Schema({

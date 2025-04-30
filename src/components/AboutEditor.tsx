@@ -52,6 +52,7 @@ const AboutEditor = () => {
       alert("About section updated!")
     } catch (err) {
       alert("Failed to update About section")
+      console.log(err)
     }
   }
 
@@ -63,7 +64,8 @@ const AboutEditor = () => {
   if (!about) return <div className="text-red-500 text-center py-10">No About section found!</div>
 
   return (
-    <div className="space-y-4">
+<>
+   { responseM?(<h2 className='text-red-400'></h2>):(<div className="space-y-4">
       <div className="grid gap-2">
         <Label htmlFor="introText">Intro Text</Label>
         <Textarea
@@ -121,7 +123,8 @@ const AboutEditor = () => {
       </div>
 
       <Button onClick={handleSave} className='hover:cursor-pointer'>Save Changes</Button>
-    </div>
+    </div>)}
+    </>
   )
 }
 

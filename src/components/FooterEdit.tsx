@@ -57,6 +57,7 @@ const FooterEditor = () => {
       alert("Footer section updated!")
     } catch (err) {
       alert("Failed to update Footer section")
+      console.log(err)
     }
   }
 

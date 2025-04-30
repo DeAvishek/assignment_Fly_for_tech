@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import axios from 'axios';
-import { DndContext, closestCenter } from '@dnd-kit/core';
+import { DndContext, closestCenter ,DragEndEvent} from '@dnd-kit/core';
 import { arrayMove, SortableContext, useSortable, verticalListSortingStrategy } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 
@@ -27,7 +27,7 @@ export default function SectionReorder({ onReorder }: { onReorder: (order: strin
     { id: 'footer', title: 'Footer' },
   ]);
 
-  const handleDragEnd = async (event: any) => {
+  const handleDragEnd = async (event: DragEndEvent) => {
     const { active, over } = event;
     if (active.id !== over?.id) {
       const oldIndex = items.findIndex(item => item.id === active.id);
